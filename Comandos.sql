@@ -1,4 +1,4 @@
--- Database: Projeto final da disciplina de BD
+-- Database: Projeto final E-commerce Tradicional
 
  -- drop table estoques;
  -- drop table pedido_produtos;
@@ -38,7 +38,7 @@ create table endereco_clientes (
 
 create table categorias(
 	codigo serial primary key,
-	nome varchar (100) not null,
+	nome varchar (100) not null unique,
 	descricao text not null
 );
 
@@ -170,7 +170,7 @@ select * from pedido_produtos;
 insert into funcionarios (nome,cpf)
 values 
 ('Gustavo','123.456.789-20'),
-('Thago','123.456.789-21'),
+('Thiago','123.456.789-21'),
 ('Rafael','123.456.789-22'),
 ('Vinicius','123.456.789-23'),
 ('Alex','123.456.789-24'),
@@ -238,11 +238,12 @@ group by c.nome;
 
 --b Quantidade de produtos em cada categoria
 
-select c.nome,count(e.quantidade)
+select c.nome,count(e.quantidade) as quantidade
 from categorias c 
 join produtos p on p.cd_categoria = c.codigo
 join estoques e on e.cd_produto = p.codigo
 group by c.nome
+order by quantidade desc;
 
 -- c. 1 SQL para construção de nota fiscal
 
