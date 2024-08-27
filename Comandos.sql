@@ -214,20 +214,29 @@ delete from funcionario_produto
 
 --a
 
+-- Mostra o cliente ,os produtos e a quantidade de cada produto 
 select c.nome,string_agg(p.nome || ' : '|| pp.qntd_produto, ', ' ) as produtos
 from 
 clientes c
 join pedidos pe on c.codigo = pe.cd_cliente
 join pedido_produtos pp on pe.codigo = pp.cd_pedido
 join produtos p on p.codigo = pp.cd_produto
-group by c.nome
+group by c.nome;
+
+-- Quantidade de produtos em estoque
 
 select p.codigo,p.nome,e.quantidade
 from produtos p
-join estoques e on e.cd_produto = p.codigo
+join estoques e on e.cd_produto = p.codigo;
 
+--Mostra clientes e quantidades de pedidos
 
---b 
+select c.nome,count(p.codigo) as pedidos
+from clientes c
+left join pedidos p on p.cd_cliente = c.codigo
+group by c.nome;
+
+--b Quantidade de produtos em cada categoria
 
 select c.nome,count(e.quantidade)
 from categorias c 
