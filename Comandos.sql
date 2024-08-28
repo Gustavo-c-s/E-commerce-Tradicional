@@ -100,7 +100,7 @@ select * from clientes;
 insert into endereco_clientes (cd_cliente,rua,bairro,cidade,uf,cep,numero)
 values
 (1,'Rua la em baixo','morro baixo','petrópolis','rj','29845-023','195'),
-(1,,'Rua ali na frente','morro acima','petrópolis','rj','29845-500','05'),
+(1,'Rua ali na frente','morro acima','petrópolis','rj','29845-500','05'),
 (2,'Rua ali atras','morro acima','teresópolis','rj','29845-500','1002'),
 (3,'Rua ali na beira','Vila luiz','belo horizonte','bh','55555-55','200'),
 (4,'Rua ali na lateral','morro alto','areado','mg','99999-11','30'),
